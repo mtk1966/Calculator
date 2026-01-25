@@ -1,11 +1,14 @@
 using Calculator.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace Calculator.Web.Controllers
 {
+    //[Authorize]
     public class AreaAndPerimeterCalculationController : Controller
     {
+      
         [HttpGet]
         public IActionResult Index()
         {

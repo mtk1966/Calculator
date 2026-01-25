@@ -6,7 +6,7 @@ using System.Diagnostics.Metrics;
 
 namespace Calculator.Web.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProcessController : Controller
     {
         public IActionResult Index()
