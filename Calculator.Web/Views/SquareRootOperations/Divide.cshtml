@@ -1,0 +1,46 @@
+@model Calculator.Web.Models.SquareRootViewModel
+@{
+    ViewData["Title"] = "Karekök Bölme";
+}
+
+<h1>Karekök Bölme (a√b / c√d)</h1>
+
+<form asp-action="Divide" method="post">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="A1">a</label>
+                <input asp-for="A1" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="B1">b</label>
+                <input asp-for="B1" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <h2>/</h2>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="A2">c</label>
+                <input asp-for="A2" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="B2">d</label>
+                <input asp-for="B2" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Böl</button>
+</form>
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Result))
+{
+    <div class="mt-3">
+        <h3>Sonuç: @Model.Result</h3>
+    </div>
+}

@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Hesap Makinesi</h1>
+    <p>Lütfen yapmak istediğiniz işlem türünü seçin.</p>
+</div>
+
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="d-grid gap-3">
+            <a asp-controller="Process" asp-action="Index" class="btn btn-lg btn-primary">Temel İşlemler (Toplama, Çıkarma, vb.)</a>
+            <a asp-controller="SquareRootOperations" asp-action="Index" class="btn btn-lg btn-success">Karekök İşlemleri</a>
+            <a asp-controller="OperationsWithExponents" asp-action="Index" class="btn btn-lg btn-info">Üslü Sayı İşlemleri</a>
+            <a asp-controller="AreaAndPerimeterCalculation" asp-action="Index" class="btn btn-lg btn-warning">Alan ve Çevre Hesaplama</a>
+            <div class="d-flex justify-content-center">
+                <a asp-controller="Home" asp-action="AboutMe" class="disco-mega-link">Hakkımda</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <h4>Toplam Yapılan İşlem Sayısı</h4>
+        <p class="display-4">@ViewBag.TotalOperations</p>
+    </div>
+</div>

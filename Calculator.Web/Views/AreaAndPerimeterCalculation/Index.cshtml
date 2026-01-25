@@ -1,0 +1,87 @@
+@model Calculator.Web.Models.ShapeViewModel
+@{
+    ViewData["Title"] = "Alan ve Çevre Hesaplama";
+}
+
+<h1>Alan ve Çevre Hesaplama</h1>
+
+<form asp-action="Index" method="post">
+    <div class="form-group">
+        <label for="SelectedShape">Şekil Seçin</label>
+        <select asp-for="SelectedShape" asp-items="@(new SelectList(Model.Shapes))" class="form-control" id="shapeSelector">
+        </select>
+    </div>
+
+    <div id="inputs">
+        <div class="form-group" id="sideA-group">
+            <label asp-for="SideA">Kenar A</label>
+            <input asp-for="SideA" class="form-control" />
+        </div>
+        <div class="form-group" id="sideB-group">
+            <label asp-for="SideB">Kenar B</label>
+            <input asp-for="SideB" class="form-control" />
+        </div>
+        <div class="form-group" id="sideC-group">
+            <label asp-for="SideC">Kenar C</label>
+            <input asp-for="SideC" class="form-control" />
+        </div>
+        <div class="form-group" id="height-group">
+            <label asp-for="Height">Yükseklik</label>
+            <input asp-for="Height" class="form-control" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Hesapla</button>
+</form>
+
+@if (Model.Area.HasValue && Model.Perimeter.HasValue)
+{
+    <div class="mt-3">
+        <h3>Sonuçlar</h3>
+        <p>Alan: @Model.Area</p>
+        <p>Çevre: @Model.Perimeter</p>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const shapeSelector = document.getElementById('shapeSelector');
+            const inputs = {
+                sideA: document.getElementById('sideA-group'),
+                sideB: document.getElementById('sideB-group'),
+                sideC: document.getElementById('sideC-group'),
+                height: document.getElementById('height-group')
+            };
+
+            function toggleInputs() {
+                const selectedShape = shapeSelector.value;
+
+                // Hide all
+                for (let key in inputs) {
+                    if (inputs[key]) {
+                        inputs[key].style.display = 'none';
+                    }
+                }
+
+                if (selectedShape === 'Kare') {
+                    inputs.sideA.style.display = 'block';
+                    inputs.sideA.querySelector('label').innerText = 'Kenar';
+                } else if (selectedShape === 'Dikdörtgen') {
+                    inputs.sideA.style.display = 'block';
+                    inputs.sideB.style.display = 'block';
+                    inputs.sideA.querySelector('label').innerText = 'Kenar A';
+                } else if (selectedShape === 'Üçgen') {
+                    inputs.sideA.style.display = 'block';
+                    inputs.sideB.style.display = 'block';
+                    inputs.sideC.style.display = 'block';
+                    inputs.height.style.display = 'block';
+                    inputs.sideA.querySelector('label').innerText = 'Taban';
+                }
+            }
+
+            shapeSelector.addEventListener('change', toggleInputs);
+            toggleInputs(); // Initial call
+        });
+    </script>
+}

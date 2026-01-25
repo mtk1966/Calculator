@@ -1,0 +1,143 @@
+﻿@model RestaurantApp.Web.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Giriş Yap"; // Sayfa başlığını Türkçe yaptık.
+
+    // HTML yapısı zaten Layout içinde olduğu için, sadece içeriği bıraktık.
+}
+
+@* HTML, HEAD ve BODY etiketleri _Layout.cshtml içinde tanımlı olmalıdır. *@
+
+<div class="login-page-container">
+    <div class="login-container">
+        <h2>Hoş Geldiniz</h2>
+        <form asp-controller="Account" asp-action="Login" method="post">
+
+            @* E-posta Alanı *@
+            <div class="form-group">
+                <label asp-for="Name">"ISim"</label>
+                <input asp-for="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            @* Şifre Alanı *@
+            <div class="form-group">
+                <label asp-for="Password">Şifre</label>
+                <div class="input-group">
+                    <input asp-for="Password" class="form-control type="password" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" onclick="togglePasswordVisibility()">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            @* Beni Hatırla Alanı *@
+            <div class="form-group">
+                <input asp-for="RememberMe" type="checkbox" />
+                <label asp-for="RememberMe">Beni Hatırla</label>
+            </div>
+
+            <button type="submit" class="login-button">Giriş Yap</button>
+            <br />
+            <br />
+            <br />
+
+            <a asp-action="Register" class="login-button">Kayıt Ol</a>
+        </form>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+    </div>
+</div>
+
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("Password");
+        var passwordIcon = document.querySelector(".input-group-text i");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordIcon.classList.remove("fa-eye");
+            passwordIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            passwordIcon.classList.remove("fa-eye-slash");
+            passwordIcon.classList.add("fa-eye");
+        }
+    }
+</script>
+
+@* Inline CSS, Layout dosyasında tanımlı olmadığı varsayılıyor. Türkçeye çevrilen metinler için daha iyi görünürlük sağlamak adına CSS içinde ufak ayarlamalar yapıldı. *@
+<style>
+    .login-page-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        background-color: #404040;
+    }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff; /* Başlık rengi, koyu arka plan üzerinde daha iyi görünmesi için beyaz yapıldı */
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #fff; /* Etiket rengi, koyu arka plan üzerinde daha iyi görünmesi için beyaz yapıldı */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            color: #ffc107; /* Hata mesajı rengi sarı yapıldı */
+            font-size: 0.9em;
+        }
+
+    .login-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ffc107;
+        border: none;
+        border-radius: 5px;
+        color: #000; /* Buton yazı rengi daha okunaklı olması için siyah yapıldı */
+        font-size: 1em;
+        cursor: pointer;
+        text-align: center;
+        display: block; /* A etiketi için tam genişlik sağlamak */
+        text-decoration: none; /* A etiketi için alt çizgiyi kaldırmak */
+        margin-top: 10px; /* Kayıt Ol butonu için üst boşluk eklendi */
+    }
+
+        .login-button:hover {
+            background-color: #e0a800;
+        }
+
+    .form-group input[type="checkbox"] {
+        width: auto; /* Checkbox için tam genişlik iptal edildi */
+        display: inline-block;
+    }
+</style>

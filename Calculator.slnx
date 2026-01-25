@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Notes/">
+    <File Path="NuGet_Paketleri_Analizi.txt" />
+    <File Path="Todos.cs" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="Calculator.Common/Calculator.Common.csproj" Id="1d2a087a-cda8-4f12-9b3f-21a59bc664db" />
+    <Project Path="Calculator.Data/Calculator.Data.csproj" />
+    <Project Path="Calculator.Web/Calculator.Web.csproj" />
+  </Folder>
+</Solution>

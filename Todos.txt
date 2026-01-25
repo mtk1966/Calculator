@@ -1,0 +1,12 @@
+dYapýlacak Ýþlemler:
+//Task:1.Class Dosyalari Oluþturulacak
+2.Veri Tabani Olsuturulacak
+3.User Auth islemleri Gerçeklestirilecek
+4.Auth Viewlari olusturulacak
+5.Toplama Cikarma vb. islemlerinin controlleri olsuturulacak
+6.Viewlar Tasarlanacak
+7.Test Islemleri Yapilacak
+8.Local Agda Calisma Saglanacak 
+
+
+

@@ -1,0 +1,16 @@
+<#@ template hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ import namespace="System.IO" #>
+<#
+    // .txt dosyanýn adýný buraya yaz (Proje klasöründe olduðunu varsayýyorum)
+    string filePath = Host.ResolvePath("Todos.txt"); 
+    if (File.Exists(filePath))
+    {
+        string[] lines = File.ReadAllLines(filePath);
+        foreach (string line in lines)
+        {
+            // Baþýna TODO ekleyerek görünmesini saðlýyoruz
+            #> // TODO: <#= line #>
+<#      }
+    }
+#>

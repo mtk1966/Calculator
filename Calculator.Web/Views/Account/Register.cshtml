@@ -1,0 +1,145 @@
+﻿
+@model RegisterViewModel
+@{
+    ViewData["Title"] = "Kayıt Ol"; // Sayfa başlığını Türkçe yaptık.
+
+    // HTML yapısı zaten Layout içinde olduğu için, sadece içeriği bıraktık.
+}
+
+@* HTML, HEAD ve BODY etiketleri _Layout.cshtml içinde tanımlı olmalıdır. *@
+
+<div class="login-page-container">
+    <div class="login-container">
+        <h2>Kayıt Ol</h2>
+        <form asp-controller="Account" asp-action="Register" method="post">
+
+            @* E-posta Alanı *@
+            <div class="form-group">
+                <label asp-for="Name">İsim:</label>
+                <input asp-for="Name" class="formDarkMode" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            @* Şifre Alanı *@
+            <div class="form-group">
+                <label asp-for="Password">Şifre</label>
+                <div class="input-group">
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <div class="input-group-append formDarkMode">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('Password')">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            @* Şifre Tekrar Alanı *@
+            <div class="form-group">
+                @* div sınıfı eklendi *@
+                <label asp-for="ConfirmPassword">Şifreyi Onayla</label>
+                <div class="input-group">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                    <div class="input-group-append formDarkMode">
+                        <span class="input-group-text" onclick="togglePasswordVisibility('ConfirmPassword')">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            <button type="submit" class="login-button">Kayıt Ol</button>
+        </form>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility(fieldId) {
+        var passwordInput = document.getElementById(fieldId);
+        var passwordIcon = event.currentTarget.querySelector("i");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordIcon.classList.remove("fa-eye");
+            passwordIcon.classList.add("fa-eye-slash");
+        } else {
+            passwordInput.type = "password";
+            passwordIcon.classList.remove("fa-eye-slash");
+            passwordIcon.classList.add("fa-eye");
+        }
+    }
+</script>
+
+
+@* Inline CSS, Layout dosyasında tanımlı olmadığı varsayılarak, aynı yerde bırakıldı. *@
+<style>
+    .login-page-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .login-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        background-color: #404040;
+    }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffffff; /* Label rengi eklendi/güncellendi */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group span {
+            color: #ffc107; /* Hata mesajı rengi güncellendi */
+            font-size: 0.9em;
+        }
+
+    .login-button {
+        width: 100%;
+        padding: 10px;
+        background-color: #ffc107;
+        border: none;
+        border-radius: 5px;
+        color: #000; /* Buton yazı rengi siyah yapıldı */
+        font-size: 1em;
+        cursor: pointer;
+    }
+
+        .login-button:hover {
+            background-color: #e0a800;
+        }
+
+    .form-group input[type="checkbox"] {
+        width: auto;
+    }
+</style>

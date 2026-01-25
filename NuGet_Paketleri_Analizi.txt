@@ -1,0 +1,53 @@
+RestaurantApp Projesi NuGet Paket Analizi
+
+Bu proje (RestaurantApp), .NET 8.0 tabanlı, katmanlı mimariye sahip bir web uygulamasıdır. Aşağıda proje genelinde kullanılan NuGet paketlerinin listesi ve ne işe yaradıkları açıklanmıştır:
+
+1. Veritabanı ve ORM (Object-Relational Mapping)
+-------------------------------------------------
+- Microsoft.EntityFrameworkCore:
+  .NET uygulamaları için ana veritabanı erişim teknolojisidir. Veritabanı tablolarını C# sınıfları (nesneler) olarak temsil etmenizi ve SQL sorguları yerine kod ile işlem yapmanızı sağlar.
+
+- Microsoft.EntityFrameworkCore.SqlServer:
+  Entity Framework Core'un Microsoft SQL Server veritabanı ile iletişim kurmasını sağlayan özel sürücüsüdür.
+
+- Microsoft.EntityFrameworkCore.Design:
+  Geliştirme aşamasında kullanılan araçları içerir. Özellikle "Migration" (veritabanı şeması değişiklikleri) oluşturmak için gereklidir.
+
+- Microsoft.EntityFrameworkCore.Tools:
+  Package Manager Console veya terminal üzerinden EF Core komutlarını (Add-Migration, Update-Database vb.) çalıştırmayı sağlar.
+
+- Microsoft.AspNetCore.Identity.EntityFrameworkCore:
+  ASP.NET Core Identity (kullanıcı yönetimi) sistemini EF Core ile entegre eder. Kullanıcılar, roller ve yetkilendirme tablolarının veritabanında otomatik oluşturulmasını ve yönetilmesini sağlar.
+
+- Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter:
+  Verileri listelemek için kullanılan "QuickGrid" bileşeninin EF Core veri kaynaklarıyla (IQueryable) verimli bir şekilde çalışmasını sağlar.
+
+2. Web ve HTTP Altyapısı
+------------------------
+- Microsoft.AspNetCore.Http & Microsoft.AspNetCore.Http.Extensions:
+  HTTP istekleri (Request) ve yanıtları (Response), çerezler (cookies) ve başlıklar (headers) ile çalışmak için temel nesneleri ve yardımcı metotları sağlar.
+
+- Microsoft.AspNetCore.Session:
+  Web uygulamasında sunucu taraflı oturum (Session) verilerini saklamak ve yönetmek için kullanılır (örneğin, alışveriş sepeti verisi).
+
+- Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation:
+  Uygulama çalışırken yapılan .cshtml (View) değişikliklerinin, uygulamayı yeniden başlatmaya gerek kalmadan tarayıcıda görülmesini sağlar. Geliştirme hızını artırır.
+
+- Microsoft.VisualStudio.Web.CodeGeneration.Design:
+  Visual Studio'nun "Scaffolding" özelliğini destekler. Otomatik olarak Controller ve View dosyaları oluşturmak için kullanılır.
+
+3. Yapılandırma (Configuration)
+-------------------------------
+- Microsoft.Extensions.Configuration, .Configuration.FileExtensions, .Configuration.Json:
+  Uygulama ayarlarını (genellikle appsettings.json dosyasından) okumak için kullanılır. Veritabanı bağlantı cümleleri gibi ayarların yönetilmesini sağlar.
+
+4. Yardımcı Araçlar ve Raporlama
+--------------------------------
+- Newtonsoft.Json:
+  JSON verilerini okumak ve oluşturmak (Serialize/Deserialize) için endüstri standardı haline gelmiş bir kütüphanedir.
+
+- EPPlus:
+  Excel dosyaları (.xlsx) oluşturmak, okumak ve düzenlemek için kullanılır. Uygulamanızda muhtemelen Excel raporu çıktısı almak için kullanılıyor.
+
+- iTextSharp:
+  PDF dökümanları oluşturmak için kullanılan eski ama popüler bir kütüphanedir. Fatura, sipariş fişi veya raporları PDF olarak indirmek için kullanılıyor olabilir.

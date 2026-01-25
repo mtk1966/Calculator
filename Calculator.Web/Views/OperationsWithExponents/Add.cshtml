@@ -1,0 +1,58 @@
+@model Calculator.Web.Models.ExponentViewModel
+@{
+    ViewData["Title"] = "Üslü İfadelerde Toplama";
+}
+
+<h1>Üslü İfadelerde Toplama (c₁ * b₁^e₁ + c₂ * b₂^e₂)</h1>
+
+<form asp-action="Add" method="post">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Coefficient1">c₁</label>
+                <input asp-for="Coefficient1" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Base1">b₁</label>
+                <input asp-for="Base1" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Exponent1">e₁</label>
+                <input asp-for="Exponent1" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <h2>+</h2>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Coefficient2">c₂</label>
+                <input asp-for="Coefficient2" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Base2">b₂</label>
+                <input asp-for="Base2" class="form-control" />
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Exponent2">e₂</label>
+                <input asp-for="Exponent2" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Topla</button>
+</form>
+
+@if (Model != null && !string.IsNullOrEmpty(Model.Result))
+{
+    <div class="mt-3">
+        <h3>Sonuç: @Model.Result</h3>
+    </div>
+}

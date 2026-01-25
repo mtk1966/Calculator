@@ -1,0 +1,93 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+.btn {
+    margin-top: 3px;
+}
+/* CSS Kýsmý */
+.disco-mega-link {
+    /* Linki butona çeviriyoruz */
+    display: inline-block;
+    padding: 20px 40px;
+    text-decoration: none;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 24px;
+    color: white !important; /* Yazý rengini garantiye alýyoruz */
+    border-radius: 50px;
+    /* Arka plan geçiþi ve gölge animasyonu */
+    animation: disco-rotation 0.5s infinite linear, glow 1s infinite alternate;
+    /* Kenarlýk (disko topu dokusu için) */
+    border: 3px double white;
+}
+
+/* 1. Efekt: Renklerin çýlgýnca deðiþmesi */
+@keyframes disco-rotation {
+    0% {
+        background-color: #ff0000;
+    }
+
+    20% {
+        background-color: #00ff00;
+    }
+
+    40% {
+        background-color: #0000ff;
+    }
+
+    60% {
+        background-color: #ffff00;
+    }
+
+    80% {
+        background-color: #ff00ff;
+    }
+
+    100% {
+        background-color: #00ffff;
+    }
+}
+
+/* 2. Efekt: Dýþarý taþan parlama (Disko ýþýðý) */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073;
+    }
+
+    to {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 60px #ff4da6;
+    }
+}
+
+/* Üzerine gelince titreme efekti */
+.disco-mega-link:hover {
+    animation: disco-rotation 0.1s infinite linear; /* Hýzlanýyor! */
+    transform: scale(1.2);
+}
