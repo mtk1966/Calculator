@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Calculator.Data.Migrations
 {
     [DbContext(typeof(CalculatorDbContext))]
-    [Migration("20260124160729_InitialCreate")]
+    [Migration("20260131175940_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -39,6 +39,26 @@ namespace Calculator.Data.Migrations
                     b.HasKey("UsageperiodId");
 
                     b.ToTable("UsagePeriod");
+                });
+
+            modelBuilder.Entity("Calculator.Common.Models.UsersIpAddress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AddDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("IpAdress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsersIpAdress");
                 });
 
             modelBuilder.Entity("Calculator.Data.Models.AplicationUser", b =>

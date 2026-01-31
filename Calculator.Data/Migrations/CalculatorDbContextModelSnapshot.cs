@@ -46,6 +46,9 @@ namespace Calculator.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime>("AddDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("IpAdress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

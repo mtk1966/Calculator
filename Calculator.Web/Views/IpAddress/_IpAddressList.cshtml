@@ -1,0 +1,35 @@
+@model IEnumerable<Calculator.Common.Models.UsersIpAddress>
+
+<div class="row">
+    @if (Model.Any())
+    {
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">ID: @item.Id</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>IP Address:</strong>
+                            <span class="badge bg-secondary">@item.IpAdress</span>
+                        </p>
+                        <p class="card-text">
+                            <strong>Date Added:</strong>
+                            <span class="badge bg-info">@item.AddDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12">
+            <div class="alert alert-warning text-center" role="alert">
+                No IP addresses found.
+            </div>
+        </div>
+    }
+</div>

@@ -23,7 +23,8 @@ namespace Calculator.Web.Controllers
             {
                 var newUserIp = new Calculator.Common.Models.UsersIpAddress
                 {
-                    IpAdress = userIpAddress
+                    IpAdress = userIpAddress,
+                    AddDate = DateTime.Now
                 };
                 _context.UsersIpAdress.Add(newUserIp);
                 _context.SaveChanges();

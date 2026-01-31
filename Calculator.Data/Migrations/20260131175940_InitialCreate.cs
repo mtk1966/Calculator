@@ -64,6 +64,20 @@ namespace Calculator.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UsersIpAdress",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IpAdress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AddDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsersIpAdress", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -229,6 +243,9 @@ namespace Calculator.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "UsagePeriod");
+
+            migrationBuilder.DropTable(
+                name: "UsersIpAdress");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
