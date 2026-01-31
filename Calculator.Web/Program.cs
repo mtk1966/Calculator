@@ -22,7 +22,18 @@ builder.Services.AddIdentity<AplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<CalculatorDbContext>()
     .AddDefaultTokenProviders();
 var app = builder.Build();
+var forwardOptions = new ForwardedHeadersOptions
+{
+    ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor |
+                       Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+};
 
+// Varsayýlan olarak sadece localhost proxy'lerini kabul eder. 
+// Tüm aðlardan gelen proxy headerlarýný kabul etmek için (Production için gerekebilir):
+forwardOptions.KnownIPNetworks.Clear();
+forwardOptions.KnownProxies.Clear();
+
+app.UseForwardedHeaders(forwardOptions);
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

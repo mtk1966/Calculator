@@ -15,5 +15,6 @@ namespace Calculator.Data
 
         }
         public DbSet<UsagePeriod> UsagePeriod { get; set; }
+        public DbSet<UsersIpAddress> UsersIpAdress { get; set; } 
     }
 }
