@@ -1,0 +1,46 @@
+@model Calculator.Web.Models.IpAddressLocationViewModel
+
+@{
+    ViewData["Title"] = "IP Adresi Konumu";
+}
+
+<h1>IP Adresi Konumu: @Model.IpAddress</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Ülke
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Country
+        </dd>
+        <dt class = "col-sm-2">
+            Þehir
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.City
+        </dd>
+        <dt class = "col-sm-2">
+            Bölge
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Region
+        </dd>
+        <dt class = "col-sm-2">
+            Enlem
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Latitude
+        </dd>
+        <dt class = "col-sm-2">
+            Boylam
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Longitude
+        </dd>
+        <dd class = "col-sm-10">
+            <a class="btn btn-primary" asp-area="" asp-controller="IpAddress" asp-action="Index">Geri</a>
+        </dd>
+    </dl>
+</div>

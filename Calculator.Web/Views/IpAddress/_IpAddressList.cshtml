@@ -12,13 +12,14 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            <strong>IP Address:</strong>
+                            <strong>IP Adresi:</strong>
                             <span class="badge bg-secondary">@item.IpAdress</span>
                         </p>
                         <p class="card-text">
-                            <strong>Date Added:</strong>
+                            <strong>Eklenme Tarihi:</strong>
                             <span class="badge bg-info">@item.AddDate.ToString("yyyy-MM-dd HH:mm:ss")</span>
                         </p>
+                        <a asp-controller="IpAddressLocation" asp-action="Index" asp-route-ipAddress="@item.IpAdress" class="btn btn-outline-primary btn-sm">Detaylar</a>
                     </div>
                 </div>
             </div>
