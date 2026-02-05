@@ -1,30 +1,39 @@
-steps:
+name: Sunucuya Deploy Et
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Sunucuya Bağlan ve Güncelle
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}  # <-- BURAYI DEĞİŞTİRDİK (Key yerine Password)
+          password: ${{ secrets.PASSWORD }}
           port: 22
           script: |
-            # Hata olursa dur
+            # Hata olursa işlemi durdur
             set -e
             
             echo "🚀 Şifre ile Güncelleme Başlıyor..."
-            
+
             # 1. Proje Klasörüne Git
             cd /home/Projects/Calculator
-            
+
             # 2. Kodları Çek
             git pull origin main
-            
+
             # 3. Web Projesi Klasörüne Gir
             cd Calculator.Web
-            
+
             # 4. Derle
             dotnet publish -c Release -o /opt/calculator
-            
+
             # 5. Servisi Yeniden Başlat
             systemctl restart calculator
-            
+
             echo "✅ İşlem Tamamlandı!"
