@@ -27,3 +27,39 @@
     </div>
 </div>
 <hr />
+
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="welcomeModalLabel">Hoş Geldiniz!</h5>
+                <button type="button" class="btn-close d-none" id="modalCloseButtonHeader" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Merhaba uygulamamı beğendiysen lütfen düşüncelerini mehmettugkocaba4@gmail.com mail adresine yaz.
+                </p>
+                <p>
+                    Hello, if you like my application, please write your thoughts to the e-mail address mehmettugkocaba4@gmail.com.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary d-none" id="modalCloseButtonFooter" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#welcomeModal').modal('show'); // Show modal immediately
+
+            setTimeout(function () {
+                $('#modalCloseButtonHeader').removeClass('d-none'); // Show header close button
+                $('#modalCloseButtonFooter').removeClass('d-none'); // Show footer close button
+            }, 3000); // 3 saniye (3000 milisaniye) sonra kapatma tuşlarını göster
+        });
+    </script>
+}
