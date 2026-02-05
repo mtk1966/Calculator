@@ -28,10 +28,11 @@ namespace Calculator.Web.Controllers
                 };
                 _context.UsersIpAdress.Add(newUserIp);
                 _context.SaveChanges();
+                ViewBag.ShowModal = true; // Show modal for new users
             }
             else
             {
-                return View();
+                ViewBag.ShowModal = false; // Do not show modal for returning users
             }
             return View();
         }
